@@ -196,3 +196,5 @@ app.get("/not/borrowed/members", (req, res) => {
 		res.send(result);
 	});
 });
+
+//  "nodemon --env-file=.env index.js"
