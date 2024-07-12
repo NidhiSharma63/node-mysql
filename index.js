@@ -6,12 +6,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const connection = mysql.createConnection({
-	host: process.env.HOST,
-	user: process.env.USER_FOR_MYSQL,
-	password: process.env.PASSWORD,
-	database: process.env.DATABASE,
-});
+const url = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}`;
+
+const connection = mysql.createConnection(url);
 
 connection.connect((err) => {
 	if (err) {
